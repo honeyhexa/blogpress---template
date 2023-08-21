@@ -1,3 +1,4 @@
+"use client";
 import { PortableText } from "@portabletext/react";
 import React from "react";
 import { PageContainer, Text } from "@/lib/ui";
