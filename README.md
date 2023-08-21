@@ -2,6 +2,8 @@
 
 BlogPress is an open-source template repository designed to create a scalable and customizable blog using Next.js and Sanity.io. It offers a modern alternative to platforms like WordPress and Medium, empowering developers and content creators to build and manage their blogs with ease. This template focuses on scalability, performance, and maintainability, making it a perfect starting point for your own blogging platform.
 
+![favicon](/app/favicon.ico)
+
 ## Installation
 
 1. Clone this repository: `git clone https://github.com/honeyhexa/blogpress---template.git`
