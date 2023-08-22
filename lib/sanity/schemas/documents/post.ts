@@ -60,6 +60,20 @@ export const post = defineType({
       options: {
         hotspot: true,
       },
+      fields: [
+        {
+          name: 'caption',
+          type: 'string',
+          title: 'Image caption',
+          description: 'Caption displayed below the image.',
+        },
+        {
+          name: 'alt',
+          type: 'string',
+          title: 'Alternative text',
+          description: 'Important for SEO and accessiblity.',
+        },
+      ],
     }),
     defineField({
       name: "heroImage",
@@ -70,6 +84,20 @@ export const post = defineType({
       options: {
         hotspot: true,
       },
+      fields: [
+        {
+          name: 'caption',
+          type: 'string',
+          title: 'Image caption',
+          description: 'Caption displayed below the image.',
+        },
+        {
+          name: 'alt',
+          type: 'string',
+          title: 'Alternative text',
+          description: 'Important for SEO and accessiblity.',
+        },
+      ],
     }),
     defineField({
       type: "array",
@@ -84,6 +112,23 @@ export const post = defineType({
         },
         {
           type: "image",
+          options: {
+            hotspot: true,
+          },
+          fields: [
+            {
+              name: 'caption',
+              type: 'string',
+              title: 'Image caption',
+              description: 'Caption displayed below the image.',
+            },
+            {
+              name: 'alt',
+              type: 'string',
+              title: 'Alternative text',
+              description: 'Important for SEO and accessiblity.',
+            },
+          ],
         },
       ],
     }),

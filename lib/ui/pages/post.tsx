@@ -16,9 +16,13 @@ import {
   OrderedList,
   UnorderedListItem,
   OrderedListItem,
+  ImageBlock,
 } from "@/lib/ui";
 
-const components: any = {
+const components = {
+  types: {
+    image: ImageBlock,
+  },
   block: {
     h1: H1,
     h2: H2,
@@ -40,10 +44,10 @@ const components: any = {
     number: OrderedListItem,
     bullet: UnorderedListItem,
   },
-  // img: ZoomImage,
 };
 
 export default function Post(props: any) {
+
   return (
     <PageContainer className="">
       <Text as="h1" size="3xl" className="text-center font-bold">
@@ -52,7 +56,7 @@ export default function Post(props: any) {
       <div className="m-auto max-w-xl flex flex-col gap-4 mb-16">
         <PortableText
           value={props.data.content}
-          listNestingMode="html"
+          // listNestingMode="html"
           components={components}
         />
       </div>
