@@ -5,6 +5,7 @@ import {
   revalidateSecret,
 } from '@/lib/sanity/sanity.api'
 import { createClient } from 'next-sanity'
+import imageUrlBuilder from '@sanity/image-url'
 
 export const client = createClient({
   projectId,
@@ -14,3 +15,7 @@ export const client = createClient({
   useCdn: revalidateSecret ? false : true,
   perspective: 'published',
 })
+
+const builder = imageUrlBuilder(client);
+
+export const urlFor = (source: any) => builder.image(source);

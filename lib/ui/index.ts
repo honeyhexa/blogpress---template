@@ -16,6 +16,6 @@ export {
   OrderedListItem,
   Image,
 } from "@/lib/ui/atoms";
-export {} from "@/lib/ui/molecules";
+export { ImageBlock } from "@/lib/ui/molecules";
 export {} from "@/lib/ui/organisms";
 export {} from "@/lib/ui/templates";
