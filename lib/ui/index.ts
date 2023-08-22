@@ -1,5 +1,5 @@
 export { PageContainer } from "@/lib/ui/misc";
-export { Element } from "@/lib/ui/utils";
+export { Element, StructuredData } from "@/lib/ui/utils";
 export {
   Text,
   H1,
