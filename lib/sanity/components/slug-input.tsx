@@ -40,7 +40,7 @@ export function SlugInput(props: any) {
       <Stack space={2}>
         <Flex align="center">
           <Text size={2} style={{ fontFamily: 'monospace' }}>
-            devrev.ai
+            domain.tld
             {route}
           </Text>
           <Card flex={1}>{props.renderDefault(props)}</Card>
