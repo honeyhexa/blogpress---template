@@ -68,7 +68,7 @@ export default function Post(props: any) {
           {props.data.title}
         </Text>
         <div className="flex flex-row gap-4">
-          {props.data.categories?.length > 0
+          {props.data.tags?.length > 0
             ? props.data.tags.map(({ name }: any, i: number) => (
                 <Text
                   key={i}
