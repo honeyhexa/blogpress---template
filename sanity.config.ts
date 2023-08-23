@@ -2,8 +2,12 @@
  * This config is used to set up Sanity Studio that's mounted on the `/pages/studio/[[...index]].tsx` route
  */
 
-// import { visionTool } from '@sanity/vision'
-import { MdFolderOpen, MdOutlineArticle, MdOutlineCategory, MdOutlineHistoryEdu } from "react-icons/md";
+import {
+  MdFolderOpen,
+  MdOutlineArticle,
+  MdOutlineCategory,
+  MdOutlineHistoryEdu,
+} from "react-icons/md";
 import { FaHashtag } from "react-icons/fa";
 import { unsplashImageAsset } from "sanity-plugin-asset-source-unsplash";
 import { media } from "sanity-plugin-media";
@@ -13,16 +17,17 @@ import {
   previewSecretId,
   projectId,
 } from "@/lib/sanity/sanity.api";
-// import { pageStructure, singletonPlugin } from 'plugins/settings'
 import { defineConfig } from "sanity";
 import { deskTool } from "sanity/desk";
-// import { unsplashImageAsset } from 'sanity-plugin-asset-source-unsplash'
 import Iframe, {
   defineUrlResolver,
   IframeOptions,
 } from "sanity-plugin-iframe-pane";
 import { previewUrl } from "sanity-plugin-iframe-pane/preview-url";
 import { post, author, category, tag } from "@/lib/sanity/schemas/documents";
+
+import { vercelDeployTool } from "sanity-plugin-vercel-deploy";
+import { draftReviewPluginV3 } from "sanity-plugin-draft-review-v3";
 
 const title = process.env.NEXT_PUBLIC_SANITY_PROJECT_TITLE || "Blog Press";
 
@@ -73,33 +78,29 @@ export default defineConfig({
               .icon(MdOutlineArticle)
               .id("post")
               .title("Posts"),
-              S.divider(),
-              S.listItem()
-                .title('Entities')
-                .icon(MdFolderOpen)
-                .child(
-                  S.list()
-                    .title('Entities')
-                    .items([
-                      S.documentTypeListItem('author')
-                        .icon(MdOutlineHistoryEdu)
-                        .id('author')
-                        .title('Authors'),
-                      S.documentTypeListItem('category')
-                        .icon(MdOutlineCategory)
-                        .id('category')
-                        .title('Categories'),
-                      S.documentTypeListItem('tag')
-                        .icon(FaHashtag)
-                        .id('tag')
-                        .title('Tags'),
-                      // S.documentTypeListItem('humanOfDevRev')
-                      //   .icon(MdOutlineGroup)
-                      //   .id('humanOfDevRev')
-                      //   .title('Humans of DevRev'),
-                    ]),
-                ),
-              S.divider(),
+            S.divider(),
+            S.listItem()
+              .title("Entities")
+              .icon(MdFolderOpen)
+              .child(
+                S.list()
+                  .title("Entities")
+                  .items([
+                    S.documentTypeListItem("author")
+                      .icon(MdOutlineHistoryEdu)
+                      .id("author")
+                      .title("Authors"),
+                    S.documentTypeListItem("category")
+                      .icon(MdOutlineCategory)
+                      .id("category")
+                      .title("Categories"),
+                    S.documentTypeListItem("tag")
+                      .icon(FaHashtag)
+                      .id("tag")
+                      .title("Tags"),
+                  ])
+              ),
+            S.divider(),
           ]),
       // `defaultDocumentNode` is responsible for adding a “Preview” tab to the document pane
       // You can add any React component to `S.view.component` and it will be rendered in the pane
@@ -135,5 +136,7 @@ export default defineConfig({
     // Vision lets you query your content with GROQ in the studio
     // https://www.sanity.io/docs/the-vision-plugin
     // visionTool({ defaultApiVersion: apiVersion }),
+    vercelDeployTool(),
+    draftReviewPluginV3(),
   ],
 });

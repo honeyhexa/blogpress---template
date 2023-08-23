@@ -2,6 +2,7 @@ import { DocumentIcon } from "@sanity/icons";
 import { defineField, defineType } from "sanity";
 import { LimitStringInput } from "@/lib/sanity/components";
 import { Slugify, authors, categories, tags } from "@/lib/sanity/fields";
+import { defaultBlockValidator } from "sanity-pills";
 
 export const post = defineType({
   type: "document",
@@ -22,19 +23,16 @@ export const post = defineType({
     select: {
       title: "title",
       slug: "slug.current",
-      nodeEnv: "node_env",
       description: "description",
-      media: "thumbnail",
+      media: "thumbnailImage",
     },
     prepare(selection) {
-      const { title, slug, description, nodeEnv, media } = selection;
+      const { title, slug, description, media } = selection;
       return {
         title,
-        subtitle: `${nodeEnv?.production ? "🔴" : "⚫"} ${
-          nodeEnv?.development ? "🔵" : "⚫"
-        } /${slug}`,
+        subtitle: slug,
         description,
-        // media,
+        media,
       };
     },
   },
@@ -62,16 +60,16 @@ export const post = defineType({
       },
       fields: [
         {
-          name: 'caption',
-          type: 'string',
-          title: 'Image caption',
-          description: 'Caption displayed below the image.',
+          name: "caption",
+          type: "string",
+          title: "Image caption",
+          description: "Caption displayed below the image.",
         },
         {
-          name: 'alt',
-          type: 'string',
-          title: 'Alternative text',
-          description: 'Important for SEO and accessiblity.',
+          name: "alt",
+          type: "string",
+          title: "Alternative text",
+          description: "Important for SEO and accessiblity.",
         },
       ],
     }),
@@ -86,16 +84,16 @@ export const post = defineType({
       },
       fields: [
         {
-          name: 'caption',
-          type: 'string',
-          title: 'Image caption',
-          description: 'Caption displayed below the image.',
+          name: "caption",
+          type: "string",
+          title: "Image caption",
+          description: "Caption displayed below the image.",
         },
         {
-          name: 'alt',
-          type: 'string',
-          title: 'Alternative text',
-          description: 'Important for SEO and accessiblity.',
+          name: "alt",
+          type: "string",
+          title: "Alternative text",
+          description: "Important for SEO and accessiblity.",
         },
       ],
     }),
@@ -104,8 +102,8 @@ export const post = defineType({
       name: "content",
       title: "📝 Content",
       group: "group_content",
-      description:
-        "Main textual content of the blog post.",
+      description: "Main textual content of the blog post.",
+      validation: defaultBlockValidator.all,
       of: [
         {
           type: "block",
@@ -117,16 +115,16 @@ export const post = defineType({
           },
           fields: [
             {
-              name: 'caption',
-              type: 'string',
-              title: 'Image caption',
-              description: 'Caption displayed below the image.',
+              name: "caption",
+              type: "string",
+              title: "Image caption",
+              description: "Caption displayed below the image.",
             },
             {
-              name: 'alt',
-              type: 'string',
-              title: 'Alternative text',
-              description: 'Important for SEO and accessiblity.',
+              name: "alt",
+              type: "string",
+              title: "Alternative text",
+              description: "Important for SEO and accessiblity.",
             },
           ],
         },
