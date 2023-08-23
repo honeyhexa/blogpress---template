@@ -1,7 +1,8 @@
 {
   "name": "blogpress---template",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
+  "license": "MIT",
   "author": {
     "name" : "Arth K. Gajjar",
     "email" : "iarthstar@gmail.com",
