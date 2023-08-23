@@ -1,3 +1,5 @@
+import { urlFor } from "../sanity/sanity.client";
+
 const DOMAIN = "https://domain.tld";
 
 const ORG_SCHEMA = {
@@ -39,6 +41,8 @@ export const generateBlogPostJsonLd = (post: any) => {
     wordCount,
   } = post;
 
+  const imageUrl = urlFor(image).format('webp').url();
+
   const schema = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
@@ -49,7 +53,7 @@ export const generateBlogPostJsonLd = (post: any) => {
     url: `${DOMAIN}/blog/${slug}`,
     headline: title,
     description: excerpt,
-    image: [image],
+    image: [imageUrl],
     dateCreated,
     datePublished,
     dateModified,
