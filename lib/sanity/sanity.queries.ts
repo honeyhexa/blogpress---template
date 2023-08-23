@@ -5,17 +5,19 @@ export const postBySlugQuery = groq`
     _id,
     "slug": slug.current,
     title,
+    excerpt,
     content,
     image,
     "articleBody": pt::text(content),
     "numberOfCharacters": length(pt::text(content)),
-    "estimatedWordCount": round(length(pt::text(content)) / 5),
+    "wordCount": round(length(pt::text(content)) / 5),
     "estimatedReadingTime": round(length(pt::text(content)) / 5 / 180 ),
     authors[] -> { name, designation },
     categories[] -> { name },
-    tags[] -> { name},
-    _createdAt,
-    _updatedAt
+    tags[] -> { name },
+    "dateCreated": _createdAt,
+    "datePublished": date,
+    "dateModified": _updatedAt
   }
 `
 

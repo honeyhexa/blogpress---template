@@ -1,4 +1,3 @@
-import { DocumentIcon } from "@sanity/icons";
 import { defineField, defineType } from "sanity";
 import { LimitStringInput } from "@/lib/sanity/components";
 import { Slugify, authors, categories, tags } from "@/lib/sanity/fields";
@@ -70,12 +69,14 @@ export const post = defineType({
           type: "string",
           title: "Image caption",
           description: "Caption displayed below the image.",
+          validation: (Rule) => Rule.required(),
         },
         {
           name: "alt",
           type: "string",
           title: "Alternative text",
           description: "Important for SEO and accessiblity.",
+          validation: (Rule) => Rule.required(),
         },
       ],
     }),
@@ -101,12 +102,14 @@ export const post = defineType({
               type: "string",
               title: "Image caption",
               description: "Caption displayed below the image.",
+              validation: (Rule) => Rule.required(),
             },
             {
               name: "alt",
               type: "string",
               title: "Alternative text",
               description: "Important for SEO and accessiblity.",
+              validation: (Rule) => Rule.required(),
             },
           ],
         },

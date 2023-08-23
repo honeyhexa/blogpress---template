@@ -6,6 +6,8 @@ import { getPostBySlug } from "@/lib/sanity/sanity.fetch";
 import { postBySlugQuery } from "@/lib/sanity/sanity.queries";
 import Post from "@/lib/ui/pages/post";
 import PostPreview from "@/lib/ui/pages/post-preview";
+import { StructuredData } from "@/lib/ui";
+import { generateBlogPostJsonLd } from "@/lib/utils";
 
 export const runtime = "edge";
 
@@ -21,15 +23,18 @@ const PageBlog: React.FC<Props> = async ({ params }) => {
   }
 
   return (
-    <LiveQuery
-      enabled={draftMode().isEnabled}
-      query={postBySlugQuery}
-      params={params}
-      initialData={data}
-      as={PostPreview}
-    >
-      <Post data={data} />
-    </LiveQuery>
+    <>
+      <StructuredData data={generateBlogPostJsonLd(data)} />
+      <LiveQuery
+        enabled={draftMode().isEnabled}
+        query={postBySlugQuery}
+        params={params}
+        initialData={data}
+        as={PostPreview}
+      >
+        <Post data={data} />
+      </LiveQuery>
+    </>
   );
 };
 

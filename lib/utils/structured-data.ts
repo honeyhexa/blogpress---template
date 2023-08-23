@@ -1,30 +1,54 @@
+const DOMAIN = "https://domain.tld";
+
 const ORG_SCHEMA = {
-    "@context": "http://schema.org",
-    "@type": "Organization",
-    "@id": "https://domain.tld",
-    name: "Org Name",
-    url: "https://domain.tld",
-    logo: {
-      "@context": "http://schema.org",
-      "@type": "ImageObject",
-      url: "https://res.cloudinary.com/practicaldev/image/fetch/s--b551aYX---/c_limit,f_png,fl_progressive,q_80,w_192/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/8j7kvp660rqzt99zui8e.png",
-      width: "192",
-      height: "192",
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "@id": DOMAIN,
+  name: "Org Name",
+  alternateName: [],
+  url: DOMAIN,
+  foundingDate: "1997",
+  foundingLocation: {
+    "@type": "Place",
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Gujarat",
+      addressCountry: "India",
     },
-  };
+  },
+  logo: {
+    "@context": "http://schema.org",
+    "@type": "ImageObject",
+    url: "https://res.cloudinary.com/practicaldev/image/fetch/s--b551aYX---/c_limit,f_png,fl_progressive,q_80,w_192/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/8j7kvp660rqzt99zui8e.png",
+    width: "192",
+    height: "192",
+  },
+};
 
 export const generateBlogPostJsonLd = (post: any) => {
-  const { title, articleBody, slug, dateCreated, datePublished, dateModified, image, keywords, wordCount, } = post;
+  const {
+    title,
+    excerpt,
+    articleBody,
+    slug,
+    dateCreated,
+    datePublished,
+    dateModified,
+    image,
+    keywords,
+    wordCount,
+  } = post;
 
   const schema = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": `https://domain.tld/blog/${slug}`,
+      "@id": `${DOMAIN}/blog/${slug}`,
     },
-    url: `https://domain.tld/blog/${slug}`,
+    url: `${DOMAIN}/blog/${slug}`,
     headline: title,
+    description: excerpt,
     image: [image],
     dateCreated,
     datePublished,
@@ -34,16 +58,19 @@ export const generateBlogPostJsonLd = (post: any) => {
     author: {
       "@context": "http://schema.org",
       "@type": "Person",
+      jobTitle: "Frontend Master",
       url: "https://github.com/iarthstar",
       name: "Arth K. Gajjar",
     },
     isPartOf: {
       "@type": "Blog",
-      "@id": "https://domain.tld/blog/",
+      "@id": `${DOMAIN}/blog`,
       name: "Org Blog",
       publisher: ORG_SCHEMA,
     },
     wordCount,
     keywords: keywords ?? [],
   };
+
+  return schema;
 };
