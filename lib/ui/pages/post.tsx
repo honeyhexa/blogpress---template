@@ -73,7 +73,7 @@ export default function Post(props: any) {
                 <Text
                   key={i}
                   font="inter"
-                  className="tracking-widest text-blue-500 text-[0.7rem] uppercase"
+                  className="tracking-widest text-blue-500 text-[0.7rem] uppercase font-semibold"
                 >
                   #{name}
                 </Text>
@@ -81,30 +81,58 @@ export default function Post(props: any) {
             : null}
         </div>
       </div>
-      <figure className="my-8 max-w-4xl m-auto">
-        <Image
-          className="w-full lg:pl-40"
-          src={urlFor(props.data.image)
-            .width(1152)
-            .height(648)
-            .format("webp")
-            .dpr(1)
-            .url()}
-          width={1152}
-          height={648}
-          priority={true}
-          loading="eager"
-          placeholder="empty"
-          alt={props.data.image.alt}
-        />
-        <Text
-          as="figcaption"
-          size="sm"
-          className="m-auto max-w-xl font-mono text-neutral-500 mt-1"
-        >
-          {props.data.image.caption}
-        </Text>
-      </figure>
+      <div className="flex flex-row my-8">
+        <div className="hidden lg:block w-[calc(50vw_-_18rem)] max-w-[17rem] px-4">
+          <div className="flex flex-col gap-0 p-4">
+          <Text as="h4" font="inter" size="sm" className="text-right text-neutral-500">
+              Author
+            </Text>
+            <Text as="h4" font="inter" size="sm" className="text-right font-semibold">
+              {props.data.authors?.[0]?.name}
+            </Text>
+            <Text as="h4" font="inter" size="sm" className="text-right mt-8 text-neutral-500">
+              Published on
+            </Text>
+            <Text as="h4" font="inter" size="sm" className="text-right font-semibold">
+              {new Date(props.data._createdAt).toLocaleDateString("en-US", {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              })}
+            </Text>
+            <Text as="h4" font="inter" size="sm" className="text-right mt-8 text-neutral-500">
+              Time to read
+            </Text>
+            <Text as="h4"  font="inter" size="sm" className="text-right font-semibold">
+              {props.data.estimatedReadingTime} min
+            </Text>
+          </div>
+        </div>
+        <figure className="w-full lg:w-[55rem]">
+          <Image
+            className="w-full"
+            src={urlFor(props.data.image)
+              .width(1152)
+              .height(648)
+              .format("webp")
+              .dpr(1)
+              .url()}
+            width={1152}
+            height={648}
+            priority={true}
+            loading="eager"
+            placeholder="empty"
+            alt={props.data.image.alt}
+          />
+          <Text
+            as="figcaption"
+            size="sm"
+            className="font-mono text-neutral-500 mt-1"
+          >
+            {props.data.image.caption}
+          </Text>
+        </figure>
+      </div>
       <div className="m-auto max-w-xl flex flex-col gap-2 mt-2 mb-16">
         <PortableText
           value={props.data.content}

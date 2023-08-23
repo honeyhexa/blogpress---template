@@ -10,7 +10,7 @@ export const ImageBlock: React.FC<any> = ({
 }) => {
   const src = urlFor(asset).format("webp").dpr(1).url();
   return (
-    <figure>
+    <figure className="mt-2">
       <ZoomImage src={src} alt={alt} priority={false} loading="lazy" {...rest} />
       <Text as="figcaption" size="sm" className="mt-1 text-neutral-500">
         {caption}
