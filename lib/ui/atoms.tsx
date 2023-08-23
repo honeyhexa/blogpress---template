@@ -82,7 +82,7 @@ export const H6: React.FC<any> = ({ className, ...rest }) => (
   <Text as="h6" size="base" className={cn("", className)} {...rest} />
 );
 export const Para: React.FC<any> = ({ className, ...rest }) => (
-  <Text as="p" size="base" className={cn("text-neutral-700", className)} {...rest} />
+  <Text as="p" size="base" className={cn("text-neutral-600", className)} {...rest} />
 );
 export const Anchor: React.FC<any> = ({ className, ...rest }) => (
   <Link

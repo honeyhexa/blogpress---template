@@ -6,10 +6,16 @@ export const postBySlugQuery = groq`
     "slug": slug.current,
     title,
     content,
+    heroImage,
     "articleBody": pt::text(content),
     "numberOfCharacters": length(pt::text(content)),
     "estimatedWordCount": round(length(pt::text(content)) / 5),
-    "estimatedReadingTime": round(length(pt::text(content)) / 5 / 180 )
+    "estimatedReadingTime": round(length(pt::text(content)) / 5 / 180 ),
+    authors,
+    categories,
+    tags,
+    _createdAt,
+    _updatedAt
   }
 `
 
