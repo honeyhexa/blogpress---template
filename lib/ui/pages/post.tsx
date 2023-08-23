@@ -48,14 +48,39 @@ const components = {
 };
 
 export default function Post(props: any) {
-  const post = { ...props.data };
-  delete post.content;
-  console.log(post);
   return (
-    <PageContainer className="">
-      <Text as="h1" size="3xl" className="m-auto max-w-xl font-bold my-2">
-        {props.data.title}
-      </Text>
+    <PageContainer>
+      <div className="m-auto max-w-xl flex flex-col gap-4">
+        <div className="flex flex-row gap-2">
+          {props.data.categories?.length > 0
+            ? props.data.categories.map(({ name }: any, i: number) => (
+                <Text
+                  key={i}
+                  font="inter"
+                  className="tracking-widest font-semibold uppercase rounded border py-1 px-2 text-[0.6rem]"
+                >
+                  {name}
+                </Text>
+              ))
+            : null}
+        </div>
+        <Text as="h1" size="4xl" className="text-4xl font-bold my-2">
+          {props.data.title}
+        </Text>
+        <div className="flex flex-row gap-4">
+          {props.data.categories?.length > 0
+            ? props.data.tags.map(({ name }: any, i: number) => (
+                <Text
+                  key={i}
+                  font="inter"
+                  className="tracking-widest text-blue-500 text-[0.7rem] uppercase"
+                >
+                  #{name}
+                </Text>
+              ))
+            : null}
+        </div>
+      </div>
       <figure className="my-8 max-w-4xl m-auto">
         <Image
           className="w-full lg:pl-40"
@@ -76,7 +101,11 @@ export default function Post(props: any) {
             .blur(2000)
             .url()}
         />
-        <Text as="figcaption" size="sm" className="m-auto max-w-xl font-mono text-neutral-500 mt-1">
+        <Text
+          as="figcaption"
+          size="sm"
+          className="m-auto max-w-xl font-mono text-neutral-500 mt-1"
+        >
           {props.data.heroImage.caption}
         </Text>
       </figure>

@@ -28,6 +28,7 @@ const dmSans = DM_Sans({ subsets: ["latin"] });
 const text = cva("text", {
   variants: {
     size: {
+      "4xl": ["text-4xl"],
       "3xl": ["text-3xl"],
       "2xl": ["text-2xl"],
       xl: ["text-xl"],
@@ -64,25 +65,25 @@ export const Text: React.FC<any> = ({
 );
 
 export const H1: React.FC<any> = ({ className, ...rest }) => (
-  <Text as="h1" size="3xl" className={cn("", className)} {...rest} />
+  <Text as="h1" size="3xl" className={cn("font-semibold ", className)} {...rest} />
 );
 export const H2: React.FC<any> = ({ className, ...rest }) => (
-  <Text as="h2" size="2xl" className={cn("mt-8", className)} {...rest} />
+  <Text as="h2" size="2xl" className={cn("font-semibold mt-8", className)} {...rest} />
 );
 export const H3: React.FC<any> = ({ className, ...rest }) => (
-  <Text as="h3" size="xl" className={cn("mt-6", className)} {...rest} />
+  <Text as="h3" size="xl" className={cn("font-semibold mt-6", className)} {...rest} />
 );
 export const H4: React.FC<any> = ({ className, ...rest }) => (
-  <Text as="h4" size="lg" className={cn("mt-4", className)} {...rest} />
+  <Text as="h4" size="lg" className={cn("font-semibold mt-4", className)} {...rest} />
 );
 export const H5: React.FC<any> = ({ className, ...rest }) => (
-  <Text as="h5" size="md" className={cn("", className)} {...rest} />
+  <Text as="h5" size="md" className={cn("font-semibold ", className)} {...rest} />
 );
 export const H6: React.FC<any> = ({ className, ...rest }) => (
-  <Text as="h6" size="base" className={cn("", className)} {...rest} />
+  <Text as="h6" size="base" className={cn("font-semibold ", className)} {...rest} />
 );
 export const Para: React.FC<any> = ({ className, ...rest }) => (
-  <Text as="p" size="base" className={cn("text-neutral-600", className)} {...rest} />
+  <Text as="p" size="lg" className={cn("text-neutral-600", className)} {...rest} />
 );
 export const Anchor: React.FC<any> = ({ className, ...rest }) => (
   <Link

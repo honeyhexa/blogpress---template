@@ -12,8 +12,8 @@ export const postBySlugQuery = groq`
     "estimatedWordCount": round(length(pt::text(content)) / 5),
     "estimatedReadingTime": round(length(pt::text(content)) / 5 / 180 ),
     authors,
-    categories,
-    tags,
+    categories[] -> { name },
+    tags[] -> { name},
     _createdAt,
     _updatedAt
   }
