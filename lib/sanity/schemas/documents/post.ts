@@ -8,7 +8,6 @@ export const post = defineType({
   type: "document",
   name: "post",
   title: "Post",
-  icon: DocumentIcon,
   groups: [
     {
       name: "group_metadata",
