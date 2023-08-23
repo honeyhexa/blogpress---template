@@ -84,29 +84,25 @@ export default function Post(props: any) {
       <figure className="my-8 max-w-4xl m-auto">
         <Image
           className="w-full lg:pl-40"
-          src={urlFor(props.data.heroImage)
+          src={urlFor(props.data.image)
             .width(1152)
             .height(648)
             .format("webp")
+            .dpr(1)
             .url()}
           width={1152}
           height={648}
-          priority={false}
-          placeholder="blur"
-          alt={props.data.heroImage.alt}
-          blurDataURL={urlFor(props.data.heroImage)
-            .width(1152)
-            .height(648)
-            .format("webp")
-            .blur(2000)
-            .url()}
+          priority={true}
+          loading="eager"
+          placeholder="empty"
+          alt={props.data.image.alt}
         />
         <Text
           as="figcaption"
           size="sm"
           className="m-auto max-w-xl font-mono text-neutral-500 mt-1"
         >
-          {props.data.heroImage.caption}
+          {props.data.image.caption}
         </Text>
       </figure>
       <div className="m-auto max-w-xl flex flex-col gap-2 mt-2 mb-16">

@@ -23,7 +23,7 @@ export const post = defineType({
       title: "title",
       slug: "slug.current",
       description: "description",
-      media: "thumbnailImage",
+      media: "image",
     },
     prepare(selection) {
       const { title, slug, description, media } = selection;
@@ -49,31 +49,14 @@ export const post = defineType({
     }),
     Slugify({ route: "/blog/" }),
     defineField({
-      name: "thumbnailImage",
-      type: "image",
-      title: "📷 Thumbnail Image",
-      description: "Image used in blog listings and previews.",
-      validation: (Rule) => Rule.required(),
-      options: {
-        hotspot: true,
-      },
-      fields: [
-        {
-          name: "caption",
-          type: "string",
-          title: "Image caption",
-          description: "Caption displayed below the image.",
-        },
-        {
-          name: "alt",
-          type: "string",
-          title: "Alternative text",
-          description: "Important for SEO and accessiblity.",
-        },
-      ],
+      name: 'excerpt',
+      title: '👀 Excerpt',
+      type: 'text',
+      description: 'A brief teaser of a blog post.',
+      validation: (Rule) => Rule.required()
     }),
     defineField({
-      name: "heroImage",
+      name: "image",
       type: "image",
       title: "🖼️ Hero Image",
       description: "Striking image displayed at the top of the post.",
@@ -132,5 +115,12 @@ export const post = defineType({
     authors,
     categories,
     tags,
+    defineField({
+      name: 'date',
+      title: 'Date',
+      type: 'datetime',
+      description: "Date when blog post was written/published.",
+      initialValue: () => new Date().toISOString(),
+    }),
   ],
 });
