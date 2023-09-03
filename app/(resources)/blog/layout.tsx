@@ -16,7 +16,7 @@ export default async function IndexRoute({
 
   const layout = (
     <div className="flex min-h-screen flex-col bg-white text-black">
-      <div className="mt-20 flex-grow px-4">{children}</div>
+      <div className="flex-grow px-4">{children}</div>
     </div>
   );
 

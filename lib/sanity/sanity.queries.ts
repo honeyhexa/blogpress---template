@@ -21,6 +21,23 @@ export const postBySlugQuery = groq`
   }
 `
 
+export const postsQuery = groq`
+  *[_type == "post"] {
+    _id,
+    "slug": slug.current,
+    title,
+    excerpt,
+    image,
+    "estimatedReadingTime": round(length(pt::text(content)) / 5 / 180 ),
+    authors[] -> { name, designation },
+    categories[] -> { name },
+    tags[] -> { name },
+    "dateCreated": _createdAt,
+    "datePublished": date,
+    "dateModified": _updatedAt
+  }
+`
+
 export const postPaths = groq`
   *[_type == "post" && slug.current != null].slug.current
 `

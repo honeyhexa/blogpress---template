@@ -5,6 +5,7 @@ import { client } from '@/lib/sanity/sanity.client'
 import {
   postBySlugQuery,
   postPaths,
+  postsQuery,
 } from '@/lib/sanity/sanity.queries'
 import { draftMode } from 'next/headers'
 
@@ -56,6 +57,13 @@ export function getPostBySlug(slug: string) {
     query: postBySlugQuery,
     params: { slug },
     tags: [`post:${slug}`],
+  })
+}
+
+export function getPosts() {
+  return sanityFetch<any | null>({
+    query: postsQuery,
+    tags: ['posts'],
   })
 }
 
