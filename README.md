@@ -1,8 +1,8 @@
-# BlogPress - Level Up Your Blog
+# ![favicon](/app/favicon.ico) BlogPress - Level Up Your Blog
 
 BlogPress is an open-source template repository designed to create a scalable and customizable blog using Next.js and Sanity.io. It offers a modern alternative to platforms like WordPress and Medium, empowering developers and content creators to build and manage their blogs with ease. This template focuses on scalability, performance, and maintainability, making it a perfect starting point for your own blogging platform.
 
-![favicon](/app/favicon.ico)
+![Alt](https://repobeats.axiom.co/api/embed/55d76fb86fd320d69c0ca8500bd282db0a6e0357.svg "Repobeats analytics image")
 
 ## Installation
 
