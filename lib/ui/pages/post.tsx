@@ -19,6 +19,7 @@ import {
   ImageBlock,
 } from "@/lib/ui";
 import { urlFor } from "@/lib/sanity/sanity.client";
+import Link from "next/link";
 
 const components = {
   types: {
@@ -51,7 +52,12 @@ export default function Post(props: any) {
   return (
     <PageContainer>
       <div className="m-auto max-w-xl flex flex-col gap-4">
-        <div className="flex flex-row gap-2">
+        <Link className="my-8" href="/blog">
+          <Text as="a" size="md" className="text-blue-500">
+            ← Blogs
+          </Text>
+        </Link>
+        {/* <div className="flex flex-row gap-2">
           {props.data.categories?.length > 0
             ? props.data.categories.map(({ name }: any, i: number) => (
                 <Text
@@ -63,7 +69,7 @@ export default function Post(props: any) {
                 </Text>
               ))
             : null}
-        </div>
+        </div> */}
         <Text as="h1" size="4xl" className="text-4xl font-bold my-2">
           {props.data.title}
         </Text>
@@ -84,28 +90,81 @@ export default function Post(props: any) {
       <div className="flex flex-row my-8">
         <div className="hidden lg:block w-[calc(50vw_-_18rem)] max-w-[17rem] px-4">
           <div className="flex flex-col gap-0 p-4">
-          <Text as="h4" font="inter" size="sm" className="text-right text-neutral-500">
+            <Text
+              as="h4"
+              font="inter"
+              size="sm"
+              className="text-right text-neutral-500"
+            >
               Author
             </Text>
-            <Text as="h4" font="inter" size="sm" className="text-right font-semibold">
+            <Text
+              as="h4"
+              font="inter"
+              size="sm"
+              className="text-right font-semibold"
+            >
               {props.data.authors?.[0]?.name}
             </Text>
-            <Text as="h4" font="inter" size="sm" className="text-right mt-8 text-neutral-500">
+            <Text
+              as="h4"
+              font="inter"
+              size="sm"
+              className="text-right mt-8 text-neutral-500"
+            >
               Published on
             </Text>
-            <Text as="h4" font="inter" size="sm" className="text-right font-semibold">
-              {new Date(props.data._createdAt).toLocaleDateString("en-US", {
+            <Text
+              as="h4"
+              font="inter"
+              size="sm"
+              className="text-right font-semibold"
+            >
+              {new Date(props.data.dateCreated).toLocaleDateString("en-US", {
                 year: "numeric",
                 month: "long",
                 day: "numeric",
               })}
             </Text>
-            <Text as="h4" font="inter" size="sm" className="text-right mt-8 text-neutral-500">
+            <Text
+              as="h4"
+              font="inter"
+              size="sm"
+              className="text-right mt-8 text-neutral-500"
+            >
               Time to read
             </Text>
-            <Text as="h4"  font="inter" size="sm" className="text-right font-semibold">
+            <Text
+              as="h4"
+              font="inter"
+              size="sm"
+              className="text-right font-semibold"
+            >
               {props.data.estimatedReadingTime} min
             </Text>
+            {props.data.categories?.length > 0 ? (
+              <>
+                <Text
+                  as="h4"
+                  font="inter"
+                  size="sm"
+                  className="text-right mt-8 text-neutral-500"
+                >
+                  Category
+                </Text>
+                {props.data.categories.map(({ name }: any, i: number) => (
+                  <Text
+                  key={name}
+                  as="h4"
+                  font="inter"
+                  size="sm"
+                  className="text-right font-semibold"
+                >
+                  {name}
+                </Text>
+                ))}
+              </>
+            ) : null}
           </div>
         </div>
         <figure className="w-full lg:w-[55rem]">
